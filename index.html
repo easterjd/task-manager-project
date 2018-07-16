@@ -82,6 +82,120 @@
     </div>
   </div>
 
+<!-- TASKS LAYOUT -->
+  <div class="container-fluid tasks-container hide">
+    <div class="row">
+<!-- ALL LISTS LIST -->
+      <div class="col s4 center-align">
+        <h2>All Lists</h2>
+        <div class="collection">
+            <a href="#!" class="collection-item">Do Dishes</a>
+            <a href="#!" class="collection-item active">Mow Lawn</a>
+            <a href="#!" class="collection-item">Grocery Shopping</a>
+            <a href="#!" class="collection-item">Pay Cable Bill</a>
+        </div>
+        
+       
+<!-- NEW TASK FORM -->
+        <div class="task-form" id="task-form">
+          <div class="">
+            <div class="card blue-grey darken-1 center">
+              <form class="card-content white-text">
+                <span class="card-title">Create A New Task</span>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="task-title" type="text" class="validate">
+                    <label for="task-title">Title</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="task-description" type="text" class="validate">
+                    <label for="task-description">Description</label>
+                  </div>
+                </div>
+                <button class="task-submit btn waves-effect waves-light" type="submit" name="action">Create New Task
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- DOING COLUMN -->
+      <div class="col s4 center-align">
+        <h2>Doing</h2>
+        <div class="card small blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+          <div class="card small blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Card Title</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+            <div class="card small blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">Card Title</span>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+      </div>
+
+<!-- DONE COLUMN -->
+      <div class="col s4 center-align">
+        <h2>Done</h2>
+        <div class="card small blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<!-- NEW LIST FORM -->
+<div class="container">
+    <div class="row new-list-form hide">
+      <div class="col s12 m12">
+        <div class="card blue-grey darken-1 center">
+          <form class="card-content white-text">
+            <span class="card-title">New List</span>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="new-list-title" type="text" class="validate">
+                <label for="new-list-title"></label>Title</label>
+              </div>
+            </div>
+            <button class="new-list-submit btn waves-effect waves-light" type="submit" name="action">Create New List
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+</div>
 
   <script defer src="./bundle.js" type="application/x-javascript"></script>
 </body>
