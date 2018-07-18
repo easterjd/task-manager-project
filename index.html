@@ -8,6 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <link rel="stylesheet" href="./style/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 
@@ -20,7 +21,7 @@
         <div class="main-navbar">
           <li><a href="#" class="waves-effect waves-light btn login-button">Login</a></li>
           <li><a href="#" class="waves-effect waves-light btn signup-button">Sign-up</a></li>
-        </div>   
+        </div>
       <!-- TASKS NAVBAR -->
         <div class="hide tasks-navbar">
           <li><a href="#" class="waves-effect waves-light btn all-tasks-button">All Tasks</a></li>
@@ -39,11 +40,11 @@
             <span class="card-title">Login</span>
             <div class="row">
               <div class="input-field col s6">
-                <input id="email" type="email" class="validate">
+                <input id="email" type="email" class="validate" value="student@galvanize.com">
                 <label for="email">Email</label>
               </div>
               <div class="input-field col s6">
-                <input id="password" type="password" class="validate">
+                <input id="password" type="password" class="validate" value="password">
                 <label for="password">Password</label>
               </div>
             </div>
@@ -89,13 +90,12 @@
       <div class="col s4 center-align">
         <h2>All Lists</h2>
         <div class="collection">
-            <a href="#!" class="collection-item">Do Dishes</a>
-            <a href="#!" class="collection-item active">Mow Lawn</a>
-            <a href="#!" class="collection-item">Grocery Shopping</a>
-            <a href="#!" class="collection-item">Pay Cable Bill</a>
+
+          <!-- List Links -->
+
         </div>
-        
-       
+
+
 <!-- NEW TASK FORM -->
         <div class="task-form" id="task-form">
           <div class="">
