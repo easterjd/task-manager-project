@@ -3,8 +3,8 @@ const renderTaskPage = require('../render/render')
 function loginUser (email, pass) {
   return axios.post('http://localhost:5000/api/users/login', {email, password: pass})
     .then(token => {
-      console.log(token)
-      renderTaskPage(token)
+      localStorage.setItem('token', JSON.stringify(token.data))
+      renderTaskPage()
     })
     .catch(err => {
       // Some Error Msg
@@ -12,8 +12,7 @@ function loginUser (email, pass) {
 }
 
 function getLists (token) {
-  console.log('getLists', token)
-  return axios.get('http://localhost:5000/api/lists', { headers: { authorization: `Bearer ${token.data.token}`}})
+  return axios.get('http://localhost:5000/api/lists', { headers: { authorization: `Bearer ${token}`}})
     .then(lists => {
       return lists
     })
