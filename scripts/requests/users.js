@@ -3,8 +3,8 @@ const renderTaskPage = require('../render/render')
 function loginUser (email, pass) {
   return axios.post('http://localhost:5000/api/users/login', {email, password: pass})
     .then(token => {
-      localStorage.setItem('token', JSON.stringify(token.data))
-      renderTaskPage()
+      localStorage.setItem('token', JSON.stringify(token.data.token))
+      // renderTaskPage()
     })
     .catch(err => {
       // Some Error Msg

@@ -1,6 +1,8 @@
 // toggle login & signup
 // const validate = require('./jquery.validate.js')
 const events = require('./render/event-listeners')
+const render = require('./render/render')
 
-events.navLinksMain()
+render.renderLogin()
 events.loginSubmit()
+events.signupSubmit()
