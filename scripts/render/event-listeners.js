@@ -27,10 +27,12 @@ function navLinksTasks () {
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
       ev.preventDefault()
-      document.querySelector('.login-form').classList.remove('hide')
-      document.querySelector('.main-navbar').classList.remove('hide')
-      document.querySelector('.tasks-navbar').classList.add('hide')
-      document.querySelector('.tasks-container').classList.add('hide')
+      // document.querySelector('.login-form').classList.remove('hide')
+      // document.querySelector('.main-navbar').classList.remove('hide')
+      // document.querySelector('.tasks-navbar').classList.add('hide')
+      // document.querySelector('.tasks-container').classList.add('hide')
+      users.logout()
+      render.renderLogin()
   })
 }
 
@@ -40,7 +42,10 @@ function loginSubmit () {
       const email = document.querySelector('#email').value
       const pass = document.querySelector('#password').value
       users.loginUser(email, pass)
-      render.renderTaskPage()
+        .then(response => {
+          render.renderTaskPage()
+        })
+
   })
 }
 
