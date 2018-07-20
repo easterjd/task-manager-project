@@ -2,7 +2,7 @@ function login () {
   return `
     <div class="row login-form">
       <div class="col s12 m12">
-        <div class="card blue-grey darken-1 center">
+        <div class="card full blue-grey darken-1 center">
           <form class="card-content white-text">
             <span class="card-title">Login</span>
             <div class="row">
@@ -27,7 +27,7 @@ function signup () {
   return `
   <div class="row signup-form hide" id="signup-form">
       <div class="col s12 m12">
-        <div class="card blue-grey darken-1 center">
+        <div class="card full blue-grey darken-1 center">
           <form class="card-content white-text">
             <span class="card-title">Signup</span>
             <div class="row">
