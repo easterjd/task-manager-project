@@ -4,5 +4,3 @@ const events = require('./render/event-listeners')
 const render = require('./render/render')
 
 render.renderLogin()
-events.loginSubmit()
-events.signupSubmit()
