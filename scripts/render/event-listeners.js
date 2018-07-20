@@ -1,4 +1,5 @@
 const users = require('../requests/users')
+const render = require('./render')
 
 function navLinksMain () {
   document.querySelector('.signup-button').addEventListener('click', (ev) => {
@@ -39,7 +40,7 @@ function loginSubmit () {
       const email = document.querySelector('#email').value
       const pass = document.querySelector('#password').value
       users.loginUser(email, pass)
-
+      render.renderTaskPage()
   })
 }
 
