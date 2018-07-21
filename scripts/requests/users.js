@@ -37,7 +37,7 @@ function updateTask(listId, id, token) {
 }
 
 // , body: { id, title, description, completed: true, list_id : listId }
-// listId, id, title, description, 
+// listId, id, title, description,
 
 function deleteTask() {
 
@@ -49,12 +49,8 @@ function deleteTask() {
 
 module.exports = {
   loginUser,
-<<<<<<< HEAD
-  getLists,
   updateTask,
   deleteTask
-=======
   logout,
   getLists
->>>>>>> 857cffde38b99853d761f17f008095f9287b8ff1
 }
