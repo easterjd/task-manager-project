@@ -11,6 +11,12 @@ function loginUser (email, pass) {
     })
 }
 
+function logout () {
+  let token = localStorage.getItem('token')
+  if (token) localStorage.removeItem('token')
+  // else some error
+}
+
 function getLists (token) {
   return axios.get('http://localhost:5000/api/lists', { headers: { authorization: `Bearer ${token}`}})
     .then(lists => {
@@ -43,7 +49,12 @@ function deleteTask() {
 
 module.exports = {
   loginUser,
+<<<<<<< HEAD
   getLists,
   updateTask,
   deleteTask
+=======
+  logout,
+  getLists
+>>>>>>> 857cffde38b99853d761f17f008095f9287b8ff1
 }

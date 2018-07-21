@@ -56,6 +56,8 @@ function renderLogin () {
   navButtons.innerHTML = nav.mainNav()
   container.innerHTML = users.login() + users.signup()
   events.navLinksMain()
+  events.loginSubmit()
+  events.signupSubmit()
 }
 
 function renderDoneTasks() {
