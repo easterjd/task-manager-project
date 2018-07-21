@@ -60,10 +60,39 @@ function newListSubmit () {
   })
 }
 
+function completeButton(){
+    Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
+        button.addEventListener('click', function(ev) {
+            ev.preventDefault()
+            const listId = ev.target.dataset.listId
+            const id = ev.target.id
+            const title = ev.target.title
+            const description = ev.target.description
+            const token = JSON.parse(localStorage.getItem('token'))
+            users.updateTask(listId, id, token)
+            render.renderTaskPage()
+        })
+    })
+} 
+
+
+function deleteButton() {
+    Array.from(document.querySelectorAll('.delete-button')).forEach(button => {
+        button.addEventListener('click', function(ev) {
+            ev.preventDefault()
+            console.log('chello')
+            const id = document
+            users.deleteTask()
+        })
+    })
+}
+
 module.exports = {
   navLinksMain,
   navLinksTasks,
   loginSubmit,
   signupSubmit,
-  newListSubmit
+  newListSubmit,
+  completeButton,
+  deleteButton
 }

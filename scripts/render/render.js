@@ -21,16 +21,31 @@ function renderTaskPage () {
     const users = require('../requests/users')
     users.getLists(loginCheck)
       .then(lists => {
-        console.log(lists)
         const listLinks = document.querySelector('.collection')
         lists.data.lists.forEach(list => {
           listLinks.innerHTML += listsTemp.listLinks(list)
+          let listTasks = list.tasks
+          listTasks.forEach(task => {
+            const doingTasks = document.querySelector('.doing-tasks')
+            const doneTasks = document.querySelector('.done-tasks')
+            if(task.completed === false) {
+              doingTasks.innerHTML += tasks.taskCard(task)
+            }
+            if(task.completed === true) {
+              console.log('hello')
+              doneTasks.innerHTML += tasks.doneTaskCard(task)
+            }
+          })
         })
+        events.completeButton()
+        events.deleteButton()
       })
   } else {
     //Some error
   }
 }
+
+
 
 function renderLogin () {
   const events = require('./event-listeners')
@@ -43,6 +58,13 @@ function renderLogin () {
   events.navLinksMain()
 }
 
+function renderDoneTasks() {
+
+}
+function renderDeletedTasks() {
+
+}
+
 // function renderSignup () {
 //   const navButtons = document.querySelector('#nav-mobile')
 //   const container = document.querySelector('.general')
@@ -52,5 +74,7 @@ function renderLogin () {
 
 module.exports = {
   renderTaskPage,
-  renderLogin
+  renderLogin,
+  renderDoneTasks,
+  renderDeletedTasks
 }

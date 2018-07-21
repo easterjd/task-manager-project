@@ -21,7 +21,29 @@ function getLists (token) {
     })
 }
 
+function updateTask(listId, id, token) {
+  const body = { 'completed' : true }
+  return axios.patch(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, body, { headers: { authorization: `Bearer ${token}`}})
+   .then(response => {
+      // console.log("this response" + response)
+      renderTaskPage.renderTaskPage()
+   })
+}
+
+// , body: { id, title, description, completed: true, list_id : listId }
+// listId, id, title, description, 
+
+function deleteTask() {
+
+}
+
+// function getTasks(token) {
+//   return axios.get('http://localhost:5000/api/lists/:listId/tasks')
+// }
+
 module.exports = {
   loginUser,
-  getLists
+  getLists,
+  updateTask,
+  deleteTask
 }

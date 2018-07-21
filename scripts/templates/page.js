@@ -36,17 +36,17 @@ function taskPage () {
         </div>
       </div>
 <!-- DOING COLUMN -->
-      <div class="col s4 center-align doing-tasks">
+      <div class="col s4 center-align">
         <h2>Doing</h2>
-
+          <div class="doing-tasks"></div>
         <!-- Task Cards -->
 
       </div>
 
 <!-- DONE COLUMN -->
-      <div class="col s4 center-align done-tasks">
+      <div class="col s4 center-align">
         <h2>Done</h2>
-
+          <div class="done-tasks"></div>
         <!-- Done Tasks -->
 
       </div>
