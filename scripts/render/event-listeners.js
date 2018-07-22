@@ -71,23 +71,25 @@ function completeButton(){
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.id
-            const title = ev.target.title
-            const description = ev.target.description
+            // const title = ev.target.title
+            // const description = ev.target.description
             const token = JSON.parse(localStorage.getItem('token'))
-            users.updateTask(listId, id, token)
-            render.renderTaskPage()
+            users.completeTask(listId, id, token)
+            // render.renderTaskPage()
         })
     })
 } 
-
 
 function deleteButton() {
     Array.from(document.querySelectorAll('.delete-button')).forEach(button => {
         button.addEventListener('click', function(ev) {
             ev.preventDefault()
             console.log('chello')
-            const id = document
-            users.deleteTask()
+            const id = ev.target.id
+            const listId = ev.target.dataset.listId
+            const token = JSON.parse(localStorage.getItem('token'))
+            users.deleteTask(listId, id, token)
+            // render.renderTaskPage()
         })
     })
 }

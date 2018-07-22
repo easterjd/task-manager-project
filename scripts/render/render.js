@@ -4,9 +4,7 @@ const { listsTemp, nav, page, tasks, users} = require('../templates')
 function renderTaskPage () {
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
-
   const loginCheck = JSON.parse(localStorage.getItem('token'))
-
   if (loginCheck) {
     // document.querySelector('.login-form').classList.add('hide')
     // document.querySelector('.main-navbar').classList.add('hide')
@@ -17,40 +15,22 @@ function renderTaskPage () {
     container.innerHTML = page.taskPage()
     navButtons.innerHTML = nav.taskNav()
     events.navLinksTasks()
-
     const users = require('../requests/users')
     users.getLists(loginCheck)
       .then(lists => {
-        const listLinks = document.querySelector('.collection')
-        lists.data.lists.forEach(list => {
-          listLinks.innerHTML += listsTemp.listLinks(list)
-          let listTasks = list.tasks
-          listTasks.forEach(task => {
-            const doingTasks = document.querySelector('.doing-tasks')
-            const doneTasks = document.querySelector('.done-tasks')
-            if(task.completed === false) {
-              doingTasks.innerHTML += tasks.taskCard(task)
-            }
-            if(task.completed === true) {
-              console.log('hello')
-              doneTasks.innerHTML += tasks.doneTaskCard(task)
-            }
-          })
-        })
+        renderTasks(lists)
         events.completeButton()
         events.deleteButton()
       })
-  } else {
-    //Some error
+    } else {
+      //error
+    }
   }
-}
-
 
 
 function renderLogin () {
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
-
   const navButtons = document.querySelector('#nav-mobile')
   const container = document.querySelector('.general')
   navButtons.innerHTML = nav.mainNav()
@@ -60,11 +40,23 @@ function renderLogin () {
   events.signupSubmit()
 }
 
-function renderDoneTasks() {
-
-}
-function renderDeletedTasks() {
-
+function renderTasks(lists) {
+  const listLinks = document.querySelector('.collection')
+  lists.data.lists.forEach(list => {
+    listLinks.innerHTML += listsTemp.listLinks(list)
+    let listTasks = list.tasks
+    listTasks.forEach(task => {
+      const doingTasks = document.querySelector('.doing-tasks')
+      const doneTasks = document.querySelector('.done-tasks')
+      if(task.completed === false) {
+        doingTasks.innerHTML += tasks.taskCard(task)
+      }
+      if(task.completed === true) {
+        console.log('hello')
+        doneTasks.innerHTML += tasks.doneTaskCard(task)
+      }
+    })
+  })
 }
 
 // function renderSignup () {
@@ -77,6 +69,5 @@ function renderDeletedTasks() {
 module.exports = {
   renderTaskPage,
   renderLogin,
-  renderDoneTasks,
-  renderDeletedTasks
+  renderTasks
 }

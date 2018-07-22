@@ -1,11 +1,10 @@
-const renderTaskPage = require('../render/render')
+const render = require('../render/render')
 
 function loginUser (email, pass) {
   return axios.post('http://localhost:5000/api/users/login', {email, password: pass})
     .then(token => {
       localStorage.setItem('token', JSON.stringify(token.data.token))
-      // renderTaskPage()
-    })
+      })
     .catch(err => {
       // Some Error Msg
     })
@@ -27,34 +26,26 @@ function getLists (token) {
     })
 }
 
-function updateTask(listId, id, token) {
+function completeTask (listId, id, token) {
   const body = { 'completed' : true }
   return axios.patch(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, body, { headers: { authorization: `Bearer ${token}`}})
    .then(response => {
-      // console.log("this response" + response)
-      renderTaskPage.renderTaskPage()
+      render.renderTaskPage()
    })
 }
 
-// , body: { id, title, description, completed: true, list_id : listId }
-// listId, id, title, description, 
-
-function deleteTask() {
-
+function deleteTask (listId, id, token) {
+  return axios.delete(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, { headers: { authorization: `Bearer ${token}`}})
+  .then(response => {
+    render.renderTaskPage()
+  })
 }
-
-// function getTasks(token) {
-//   return axios.get('http://localhost:5000/api/lists/:listId/tasks')
-// }
 
 module.exports = {
   loginUser,
-<<<<<<< HEAD
   getLists,
-  updateTask,
-  deleteTask
-=======
+  completeTask,
+  deleteTask,
   logout,
-  getLists
->>>>>>> 857cffde38b99853d761f17f008095f9287b8ff1
+ 
 }
