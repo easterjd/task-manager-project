@@ -80,10 +80,11 @@ function listTasks() {
       let events = require('./event-listeners')
       events.completeButton()
       events.deleteButton()
+      events.updateButton()
     })
 
   }
-  
+
 
 function renderNewListForm(){
   const container = document.querySelector('.general')
@@ -98,7 +99,7 @@ function listLinkId(id) {
     renderTaskPage()
     linkId = Number(id)
     return linkId
-  } 
+  }
 }
 
 module.exports = {

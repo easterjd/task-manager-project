@@ -5,9 +5,11 @@ function taskCard (data) {
       <span class="card-title">${data.title}</span>
       <p>${data.description}</p>
     </div>
-    <div class="card-action">
-    <button id="${data.id}" data-list-id="${data.list_id}"class="complete-button btn waves-effect waves-light">Complete
-    </button>
+    <div id=${data.id} class="card-action">
+      <button data-list-id="${data.list_id}"class="update-button btn waves-effect waves-light">Update
+      </button>
+      <button data-list-id="${data.list_id}"class="complete-button btn waves-effect waves-light">Complete
+      </button>
     </div>
   </div>`
 }
@@ -19,14 +21,35 @@ function doneTaskCard (data) {
       <span class="card-title">${data.title}</span>
       <p>${data.description}</p>
     </div>
-    <div class="card-action">
-    <button id="${data.id}" data-list-id="${data.list_id}"class="delete-button btn waves-effect waves-light">Remove
-    </button>
+    <div id="${data.id}" class="card-action">
+      <button data-list-id="${data.list_id}"class="delete-button btn waves-effect waves-light">Remove
+      </button>
     </div>
   </div>`
 }
 
+function taskUpdateCard (title, description) {
+  const template = `<form class="card-content white-text">
+    <span class="card-title">Update Task</span>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="update-title" type="text" class="validate" value="${title}" required>
+        <label for="update-title">Title</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="update-description" type="text" class="validate" value="${description}" required>
+        <label for="update-description">Description</label>
+      </div>
+    </div>
+    <button class="task-update btn waves-effect waves-light" name="action">Update Task
+    </button>
+  </form>`
+
+  return template
+}
+
 module.exports = {
   taskCard,
-  doneTaskCard
+  doneTaskCard,
+  taskUpdateCard
 }
