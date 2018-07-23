@@ -1,21 +1,23 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
+const messages = require('./messages')
+let listLinkId= ""
 
 
 function navLinksMain () {
+  signupSubmit()
+  loginSubmit()
   document.querySelector('.signup-button').addEventListener('click', (ev) => {
       ev.preventDefault()
       document.querySelector('.login-form').classList.add('hide')
       document.querySelector('.signup-form').classList.remove('hide')
-      signupSubmit()
   })
 
   document.querySelector('.login-button').addEventListener('click', (ev) => {
       ev.preventDefault()
       document.querySelector('.login-form').classList.remove('hide')
       document.querySelector('.signup-form').classList.add('hide')
-      loginSubmit()
   })
 }
 
@@ -26,7 +28,7 @@ function navLinksTasks () {
       render.renderNewListForm()
     //   document.querySelector('.new-list-form').classList.remove('hide')
       newListSubmit()
-      
+
   })
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
@@ -52,22 +54,34 @@ function loginSubmit () {
         .then(response => {
           render.renderTaskPage()
         })
+        .catch(err => {
+          messages.failureMsg('login')
+        })
   })
 }
 
 function signupSubmit () {
   document.querySelector('.signup-submit').addEventListener('click', (ev) => {
       ev.preventDefault()
-      document.querySelector('.signup-form').classList.add('hide')
-      document.querySelector('.login-form').classList.remove('hide')
       const email = document.querySelector('#signup-email').value
       const password = document.querySelector('#signup-password').value
+      const passwordRe = document.querySelector('#signup-password-re-enter').value
       const first_name = document.querySelector('#signup-first-name').value
-      const last_name = document.querySelector('#signup-last-name').value    
-      users.signupUser(password, email, first_name, last_name)
-        .then(response => {
+      const last_name = document.querySelector('#signup-last-name').value
+      if (email && password && passwordRe && first_name && last_name) {
+        users.signupUser(password, email, first_name, last_name)
+          .then(response => {
             render.renderLogin()
-        })  
+            messages.successMsg('login')
+          })
+          .catch(err => {
+            messages.failureMsg('signup')
+          })
+      } else {
+        console.log('error')
+        messages.failureMsg('signup')
+      }
+
   })
 }
 
@@ -91,7 +105,7 @@ function newTaskSubmit () {
         console.log('listid' + list_id)
         users.createTask(title, description, list_id, token)
     })
-    
+
 }
 
 function completeButton(){
@@ -104,7 +118,7 @@ function completeButton(){
             users.completeTask(listId, id, token)
         })
     })
-} 
+}
 
 function deleteButton() {
     Array.from(document.querySelectorAll('.delete-button')).forEach(button => {

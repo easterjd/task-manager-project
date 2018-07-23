@@ -5,30 +5,34 @@ let linkId = 0
 function renderTaskPage () {
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
+
   const loginCheck = JSON.parse(localStorage.getItem('token'))
+
   if (loginCheck) {
     const container = document.querySelector('.general')
     const navButtons = document.querySelector('#nav-mobile')
     container.innerHTML = page.taskPage()
     navButtons.innerHTML = nav.taskNav()
     events.navLinksTasks()
+
     const users = require('../requests/users')
     users.getLists(loginCheck)
       .then(lists => {
-        renderTasks(lists)
-        events.completeButton()
-        events.deleteButton()
-        events.newTaskSubmit()
-        events.listLinks()
+        console.log(lists)
+        const listLinks = document.querySelector('.collection')
+        lists.data.lists.forEach(list => {
+          listLinks.innerHTML += listsTemp.listLinks(list)
+        })
       })
   } else {
-      //error
+    //Some error
   }
 }
 
 function renderLogin () {
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
+
   const navButtons = document.querySelector('#nav-mobile')
   const container = document.querySelector('.general')
   navButtons.innerHTML = nav.mainNav()
