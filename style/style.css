@@ -10,5 +10,9 @@
 
 .notice-para {
   opacity: 0;
+  font-size: 16pt;
+  padding-top: 10px;
   text-align: center;
+  color: black;
+  transition: 1.2s
 }

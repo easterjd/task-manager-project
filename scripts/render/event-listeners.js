@@ -1,7 +1,7 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
-const errors = require('./errors')
+const messages = require('./messages')
 let listLinkId= ""
 
 
@@ -54,6 +54,9 @@ function loginSubmit () {
         .then(response => {
           render.renderTaskPage()
         })
+        .catch(err => {
+          messages.failureMsg('login')
+        })
   })
 }
 
@@ -65,16 +68,20 @@ function signupSubmit () {
       const passwordRe = document.querySelector('#signup-password-re-enter').value
       const first_name = document.querySelector('#signup-first-name').value
       const last_name = document.querySelector('#signup-last-name').value
-      if (password !== passwordRe) {
-        errors.failureMsg()
-        // Add Error
-      } else {
+      if (email && password && passwordRe && first_name && last_name) {
         users.signupUser(password, email, first_name, last_name)
           .then(response => {
-            console.log(response)
             render.renderLogin()
+            messages.successMsg('login')
           })
+          .catch(err => {
+            messages.failureMsg('signup')
+          })
+      } else {
+        console.log('error')
+        messages.failureMsg('signup')
       }
+
   })
 }
 
