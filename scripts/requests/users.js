@@ -49,6 +49,14 @@ function createList (title, token) {
   })
 }
 
+function updateTask (listId, id, body, token) {
+  return axios.patch(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, body, { headers: { authorization: `Bearer ${token}`}})
+  .then(response => {
+    console.log(response)
+    render.renderTaskPage()
+  })
+}
+
 function completeTask (listId, id, token) {
   const body = { 'completed' : true }
   return axios.patch(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, body, { headers: { authorization: `Bearer ${token}`}})
@@ -83,6 +91,6 @@ module.exports = {
   logout,
   createTask,
   createList,
-
+  updateTask
 
 }

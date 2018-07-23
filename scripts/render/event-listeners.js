@@ -1,6 +1,7 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
+const tasks = require('../templates/tasks')
 const messages = require('./messages')
 
 
@@ -104,12 +105,43 @@ function newTaskSubmit () {
     })
 }
 
+function updateButton () {
+  Array.from(document.querySelectorAll('.update-button')).forEach(button => {
+    button.addEventListener('click', (ev) => {
+      ev.preventDefault()
+      const listId = ev.target.dataset.listId
+      const id = ev.target.parentNode.id
+
+      const title = ev.target.parentNode.parentNode.querySelector('span').textContent
+      const description = ev.target.parentNode.parentNode.querySelector('p').textContent
+      console.log(title, description, listId, id)
+      const cardContainer = ev.target.parentNode.parentNode
+      cardContainer.innerHTML = tasks.taskUpdateCard(title, description)
+
+
+      document.querySelector('.task-update').addEventListener('click', (ev) => {
+        ev.preventDefault()
+        const newTitle = document.querySelector('#update-title').value
+        const newDesc = document.querySelector('#update-description').value
+        const body = {title: newTitle, description: newDesc}
+        const token = JSON.parse(localStorage.getItem('token'))
+        users.updateTask(listId, id, body, token)
+          .then(response => {
+            console.log(response)
+            render.listTasks()
+          })
+      })
+    })
+  })
+}
+
 function completeButton(){
     Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
         button.addEventListener('click', function(ev) {            
             ev.preventDefault()
             const listId = ev.target.dataset.listId
-            const id = ev.target.id
+            const id = ev.target.parentNode.id
+            console.log(id)
             const token = JSON.parse(localStorage.getItem('token'))
             users.completeTask(listId, id, token)
         })
@@ -121,7 +153,8 @@ function deleteButton() {
         button.addEventListener('click', function(ev) {
             ev.preventDefault()
             console.log('chello')
-            const id = ev.target.id
+            const id = ev.target.parentNode.id
+            console.log(id)
             const listId = ev.target.dataset.listId
             const token = JSON.parse(localStorage.getItem('token'))
             users.deleteTask(listId, id, token)
@@ -164,6 +197,7 @@ module.exports = {
   completeButton,
   deleteButton,
   newTaskSubmit,
-  listLinks
+  listLinks,
+  updateButton
 
 }
