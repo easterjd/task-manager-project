@@ -1,6 +1,7 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
+const errors = require('./errors')
 let listLinkId= ""
 
 
@@ -65,16 +66,15 @@ function signupSubmit () {
       const first_name = document.querySelector('#signup-first-name').value
       const last_name = document.querySelector('#signup-last-name').value
       if (password !== passwordRe) {
-        throw new Error('Passwords Dont Match')
+        errors.failureMsg()
         // Add Error
-      }
-      users.signupUser(password, email, first_name, last_name)
-        .then(response => {
-          console.log(response)
+      } else {
+        users.signupUser(password, email, first_name, last_name)
+          .then(response => {
+            console.log(response)
             render.renderLogin()
-        })
-
-
+          })
+      }
   })
 }
 
