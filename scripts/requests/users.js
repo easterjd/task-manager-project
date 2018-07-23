@@ -5,10 +5,11 @@ function loginUser (email, pass) {
     .then(token => {
       localStorage.setItem('token', JSON.stringify(token.data.token))
       })
-    .catch(err => {
-      // Some Error Msg
-      console.log('error: ', err)
-    })
+    // .catch(err => {
+    //   // Some Error Msg
+    //   console.log('error: ', err)
+    //   return err
+    // })
 }
 
 function signupUser ( password, email, first_name, last_name) {
