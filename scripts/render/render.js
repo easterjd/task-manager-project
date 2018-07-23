@@ -29,6 +29,7 @@ function renderTaskPage () {
           let number = Number(listLinks.children[0].id)
           linkId = number
       }
+      events.listLinks()
       })
   } else {
     //Some error
