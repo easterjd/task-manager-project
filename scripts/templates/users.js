@@ -31,8 +31,16 @@ function signup () {
           <form class="card-content white-text">
             <span class="card-title">Signup</span>
             <div class="row">
+              <div class="input-field col s6">
+                <input id="signup-first-name" type="text" class="validate" placeholder="jane">
+                <label for="signup-first-name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="signup-last-name" type="text" class="validate" placeholder="doe">
+              <label for="signup-last-name">Last Name</label>
+            </div>
               <div class="input-field col s12">
-                <input id="signup-email" type="email" class="validate">
+                <input id="signup-email" type="email" class="validate" placeholder="janedoe@yahoo.com">
                 <label for="email">Email</label>
               </div>
               <div class="input-field col s6">
@@ -41,7 +49,7 @@ function signup () {
               </div>
               <div class="input-field col s6">
                 <input id="signup-password-re-enter" type="password" class="validate" placeholder="re-enter your password">
-                <label for="password">Password</label>
+                <label for="signup-password-re-enter">Password</label>
               </div>
             </div>
             <button class="signup-submit btn waves-effect waves-light" type="submit" name="action">Signup

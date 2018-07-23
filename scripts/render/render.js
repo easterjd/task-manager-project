@@ -1,5 +1,5 @@
 const events = require('./event-listeners')
-const { listsTemp, nav, page, tasks, users} = require('../templates')
+const { listsTemp, nav, page, tasks, users } = require('../templates')
 
 function renderTaskPage () {
   const events = require('./event-listeners')
@@ -22,11 +22,10 @@ function renderTaskPage () {
         events.completeButton()
         events.deleteButton()
       })
-    } else {
+  } else {
       //error
-    }
   }
-
+}
 
 function renderLogin () {
   const events = require('./event-listeners')
@@ -59,6 +58,11 @@ function renderTasks(lists) {
   })
 }
 
+function renderNewListForm(){
+  const container = document.querySelector('.general')
+  container.innerHTML = listsTemp.newListForm()
+}
+
 // function renderSignup () {
 //   const navButtons = document.querySelector('#nav-mobile')
 //   const container = document.querySelector('.general')
@@ -69,5 +73,6 @@ function renderTasks(lists) {
 module.exports = {
   renderTaskPage,
   renderLogin,
-  renderTasks
+  renderTasks,
+  renderNewListForm
 }

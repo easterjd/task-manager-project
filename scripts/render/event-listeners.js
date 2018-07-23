@@ -1,5 +1,6 @@
 const users = require('../requests/users')
 const render = require('./render')
+const lists = require('../templates/lists')
 
 function navLinksMain () {
   document.querySelector('.signup-button').addEventListener('click', (ev) => {
@@ -21,7 +22,8 @@ function navLinksTasks () {
   document.querySelector('.new-list-button').addEventListener('click', (ev) => {
       ev.preventDefault()
       document.querySelector('.tasks-container').classList.add('hide')
-      document.querySelector('.new-list-form').classList.remove('hide')
+      render.renderNewListForm()
+    //   document.querySelector('.new-list-form').classList.remove('hide')
       newListSubmit()
   })
 
@@ -54,6 +56,14 @@ function signupSubmit () {
       ev.preventDefault()
       document.querySelector('.signup-form').classList.add('hide')
       document.querySelector('.login-form').classList.remove('hide')
+      const email = document.querySelector('#signup-email').value
+      const password = document.querySelector('#signup-password').value
+      const first_name = document.querySelector('#signup-first-name').value
+      const last_name = document.querySelector('#signup-last-name').value    
+      users.signupUser(password, email, first_name, last_name)
+        .then(response => {
+            render.renderLogin()
+        })  
   })
 }
 
@@ -62,7 +72,23 @@ function newListSubmit () {
       ev.preventDefault()
       document.querySelector('.new-list-form').classList.add('hide')
       document.querySelector('.tasks-container').classList.remove('hide')
+      const title = document.querySelector('#new-list-title').value
+      const token = JSON.parse(localStorage.getItem('token'))
+
+      users.createList(title, token)
   })
+}
+
+function newTaskSubmit () {
+    document.querySelector('.task-submit').addEventListener('click', (ev) => {
+        ev.preventDefault()
+        const title = document.querySelector('.task-title').value
+        const description = document.querySelector('.task-description').value
+        const token = JSON.parse(localStorage.getItem('token'))
+
+        users.createTask(title, description, token)
+    })
+    
 }
 
 function completeButton(){
@@ -101,5 +127,7 @@ module.exports = {
   signupSubmit,
   newListSubmit,
   completeButton,
-  deleteButton
+  deleteButton,
+  newTaskSubmit,
+
 }

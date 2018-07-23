@@ -26,10 +26,6 @@ function doneTaskCard (data) {
   </div>`
 }
 
-//add event listener to "complete" button
-//on click, let completed = true
-//on tasks render, if completed = false, put in doing category, if completed = true, put in done category
-
 module.exports = {
   taskCard,
   doneTaskCard
