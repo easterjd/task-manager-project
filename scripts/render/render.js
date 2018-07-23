@@ -19,6 +19,7 @@ function renderTaskPage () {
     users.getLists(loginCheck)
       .then(lists => {
         const listLinks = document.querySelector('.collection')
+        listLinks.innerHTML = ""
         lists.data.lists.forEach(list => {
           listLinks.innerHTML += listsTemp.listLinks(list)
         })
@@ -30,6 +31,7 @@ function renderTaskPage () {
           linkId = number
       }
       events.listLinks()
+      events.newTaskSubmit()
       })
   } else {
     //Some error
@@ -61,10 +63,10 @@ function listTasks() {
             const doingTasks = document.querySelector('.doing-tasks')
             const doneTasks = document.querySelector('.done-tasks')
             const taskies = list.tasks
-            // console.log(tasks[0])
             taskies.forEach(task => {
               if(task.completed === false) {
                 doingTasks.innerHTML += tasks.tasks.taskCard(task)
+
                }
               if(task.completed === true) {
               doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
@@ -72,9 +74,15 @@ function listTasks() {
           })
         }
        })
-      })
-}
+    })
+    .then(res => {
+      let events = require('./event-listeners')
+      events.completeButton()
+      events.deleteButton()
+    })
 
+  }
+  
 
 function renderNewListForm(){
   const container = document.querySelector('.general')
@@ -90,18 +98,7 @@ function listLinkId(id) {
     linkId = Number(id)
     return linkId
   } 
-//  listTasks()
 }
-
-
-// function renderSignup () {
-//   const navButtons = document.querySelector('#nav-mobile')
-//   const container = document.querySelector('.general')
-//   navButtons.innerHTML = nav.mainNav()
-//   container.innerHTML = users.signup()
-// }
-
-
 
 module.exports = {
   renderTaskPage,

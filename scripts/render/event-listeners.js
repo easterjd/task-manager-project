@@ -26,9 +26,7 @@ function navLinksTasks () {
       ev.preventDefault()
       document.querySelector('.tasks-container').classList.add('hide')
       render.renderNewListForm()
-    //   document.querySelector('.new-list-form').classList.remove('hide')
       newListSubmit()
-
   })
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
@@ -111,6 +109,7 @@ function newTaskSubmit () {
 function completeButton(){
     Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
         button.addEventListener('click', function(ev) {
+            
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.id
@@ -143,8 +142,11 @@ function listLinks() {
             link.classList.add('active')
             render.listLinkId(link.id)
             console.log(link.id)
+            completeButton()
         })
     })
+    // completeButton()
+    // deleteButton()
 }
 
 render.listClicked
