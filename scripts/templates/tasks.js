@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 function taskCard (data) {
   return `
   <div class="card small blue-grey darken-1">
@@ -10,6 +12,7 @@ function taskCard (data) {
       </button>
       <button data-list-id="${data.list_id}"class="complete-button btn waves-effect waves-light">Complete
       </button>
+      <p class="white-text">${data.created_at === data.updated_at ? 'Created' + moment(data.created_at).format('LLL') : 'Updated' + moment(data.updated_at).format('LLL')}</p>
     </div>
   </div>`
 }
@@ -24,6 +27,7 @@ function doneTaskCard (data) {
     <div id="${data.id}" class="card-action">
       <button data-list-id="${data.list_id}"class="delete-button btn waves-effect waves-light">Remove
       </button>
+      <p class="white-text">Completed ${moment(data.updated_at).format('LLL')}</p>
     </div>
   </div>`
 }
