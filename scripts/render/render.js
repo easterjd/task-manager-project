@@ -57,9 +57,10 @@ function listTasks() {
   const users = require('../requests/users')
   users.getLists(loginCheck)
       .then(lists => {
+        console.log(lists.data.lists)
         let listTasks = lists.data.lists[linkId].tasks
-        console.log(linkId)
-        console.log(lists.data.lists[linkId].tasks)
+        // console.log(linkId)
+        // console.log(lists.data.lists[linkId].tasks)
         listTasks.forEach(task => {
           const tasks = require('../templates')
           const doingTasks = document.querySelector('.doing-tasks')
