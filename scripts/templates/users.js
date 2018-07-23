@@ -18,6 +18,9 @@ function login () {
             <button class="login-submit btn waves-effect waves-light" type="submit" name="action">Login
             </button>
           </form>
+          <div class="notice-para">
+          <p></p>
+          </div>
         </div>
       </div>
     </div>`
@@ -31,30 +34,25 @@ function signup () {
           <form class="card-content white-text">
             <span class="card-title">Signup</span>
             <div class="row">
-              <div class="input-field col s6">
-                <input id="signup-first-name" type="text" class="validate" placeholder="jane">
-                <label for="signup-first-name">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="signup-last-name" type="text" class="validate" placeholder="doe">
-              <label for="signup-last-name">Last Name</label>
-            </div>
               <div class="input-field col s12">
-                <input id="signup-email" type="email" class="validate" placeholder="janedoe@yahoo.com">
+                <input id="signup-email" type="email" class="validate" required>
                 <label for="email">Email</label>
               </div>
               <div class="input-field col s6">
-                <input id="signup-password" type="password" class="validate" placeholder="choose a password">
+                <input id="signup-password" type="password" class="validate" placeholder="choose a password" required>
                 <label for="password">Password</label>
               </div>
               <div class="input-field col s6">
-                <input id="signup-password-re-enter" type="password" class="validate" placeholder="re-enter your password">
-                <label for="signup-password-re-enter">Password</label>
+                <input id="signup-password-re-enter" type="password" class="validate" placeholder="re-enter your password" required>
+                <label for="password">Password</label>
               </div>
             </div>
             <button class="signup-submit btn waves-effect waves-light" type="submit" name="action">Signup
             </button>
           </form>
+          <div class="notice-para">
+          <p></p>
+          </div>
         </div>
       </div>
     </div>`
