@@ -64,12 +64,12 @@ function listTasks() {
           const tasks = require('../templates')
           const doingTasks = document.querySelector('.doing-tasks')
           const doneTasks = document.querySelector('.done-tasks')
-          if(task.completed === false) {
-            doingTasks.innerHTML += tasks.tasks.taskCard(task)
-          }
-          if(task.completed === true) {
-           doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
-          }
+          // if(task.completed === false) {
+          //   doingTasks.innerHTML += tasks.tasks.taskCard(task)
+          // }
+          // if(task.completed === true) {
+          //  doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
+          // }
        })
       })
 }
