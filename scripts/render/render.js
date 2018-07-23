@@ -63,10 +63,11 @@ function listTasks() {
             const doingTasks = document.querySelector('.doing-tasks')
             const doneTasks = document.querySelector('.done-tasks')
             const taskies = list.tasks
+            doingTasks.innerHTML = ""
+            doneTasks.innerHTML = ""
             taskies.forEach(task => {
               if(task.completed === false) {
                 doingTasks.innerHTML += tasks.tasks.taskCard(task)
-
                }
               if(task.completed === true) {
               doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
