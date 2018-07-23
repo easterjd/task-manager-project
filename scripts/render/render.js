@@ -18,11 +18,17 @@ function renderTaskPage () {
     const users = require('../requests/users')
     users.getLists(loginCheck)
       .then(lists => {
-        console.log(lists)
         const listLinks = document.querySelector('.collection')
         lists.data.lists.forEach(list => {
           listLinks.innerHTML += listsTemp.listLinks(list)
         })
+        listTasks()
+        if(linkId === 0) {
+          let activeLink = listLinks.children[0]
+          activeLink.classList.add('active')
+          let number = Number(listLinks.children[0].id)
+          linkId = number
+      }
       })
   } else {
     //Some error
@@ -42,38 +48,27 @@ function renderLogin () {
   events.signupSubmit()
 }
 
-function renderTasks(lists) {
-  const listLinks = document.querySelector('.collection')
-  listTasks(lists.data.lists)
-  lists.data.lists.forEach(list => {
-    listLinks.innerHTML += listsTemp.listLinks(list)
-  })
-    if(linkId === 0) {
-      let activeLink = listLinks.children[0]
-      activeLink.classList.add('active')
-      let number = Number(listLinks.children[0].id)
-      linkId = number
-  }
-  listTasks()
-}
-
 function listTasks() {
+  console.log('hello')
   const loginCheck = JSON.parse(localStorage.getItem('token'))
   const users = require('../requests/users')
   users.getLists(loginCheck)
       .then(lists => {
         let listTasks = lists.data.lists
         listTasks.forEach(list => {
-          console.log(list)
-          const tasks = require('../templates')
-          const doingTasks = document.querySelector('.doing-tasks')
-          const doneTasks = document.querySelector('.done-tasks')
-          // if(task.completed === false) {
-          //   doingTasks.innerHTML += tasks.tasks.taskCard(task)
-          // }
-          // if(task.completed === true) {
-          //  doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
-          // }
+          if(list.id === linkId){
+            const tasks = require('../templates')
+            const doingTasks = document.querySelector('.doing-tasks')
+            const doneTasks = document.querySelector('.done-tasks')
+            if(list.task.completed === false) {
+              doingTasks.innerHTML += tasks.tasks.taskCard(task)
+            }
+            if(task.completed === true) {
+             doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
+            }
+          }
+          
+
        })
       })
 }
@@ -108,7 +103,6 @@ function listLinkId(id) {
 module.exports = {
   renderTaskPage,
   renderLogin,
-  renderTasks,
   renderNewListForm,
   listLinkId,
   linkId,

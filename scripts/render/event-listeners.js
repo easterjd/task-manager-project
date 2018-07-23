@@ -143,7 +143,6 @@ function listLinks() {
             link.classList.add('active')
             render.listLinkId(link.id)
             console.log(link.id)
-            // render.listTasks()
         })
     })
 }
