@@ -28,7 +28,7 @@ function taskPage () {
                     <label for="task-description">Description</label>
                   </div>
                 </div>
-                <button class="task-submit btn waves-effect waves-light" type="submit" name="action">Create New Task
+                <button class="task-submit btn waves-effect waves-light" name="action">Create New Task
                 </button>
               </form>
             </div>

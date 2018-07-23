@@ -21,6 +21,8 @@ function renderTaskPage () {
         renderTasks(lists)
         events.completeButton()
         events.deleteButton()
+        events.newTaskSubmit()
+        events.listLinks()
       })
   } else {
       //error

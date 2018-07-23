@@ -55,7 +55,6 @@ function completeTask (listId, id, token) {
    })
 }
 
-
 function deleteTask (listId, id, token) {
   return axios.delete(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, { headers: { authorization: `Bearer ${token}`}})
   .then(response => {
@@ -63,10 +62,10 @@ function deleteTask (listId, id, token) {
   })
 }
 
-
-function createTask (title, description, token) {
-  const body = { title, description }
-  return axios.post(`http://localhost:5000/api/lists`, body, { headers: { authorization: `Bearer ${token}`}})
+function createTask (title, description, list_id, token) {
+  console.log('hi from createtaskrequest')
+  const body = { title, description, list_id }
+  return axios.post(`http://localhost:5000/api/lists/${list_id}/tasks`, body, { headers: { authorization: `Bearer ${token}`}})
   .then(response => {
     render.renderTaskPage()
   })

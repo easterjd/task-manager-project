@@ -1,6 +1,8 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
+let listLinkId= ""
+
 
 function navLinksMain () {
   document.querySelector('.signup-button').addEventListener('click', (ev) => {
@@ -25,6 +27,7 @@ function navLinksTasks () {
       render.renderNewListForm()
     //   document.querySelector('.new-list-form').classList.remove('hide')
       newListSubmit()
+      
   })
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
@@ -36,6 +39,9 @@ function navLinksTasks () {
       users.logout()
       render.renderLogin()
   })
+
+  //all-tasks-button
+
 }
 
 function loginSubmit () {
@@ -47,7 +53,6 @@ function loginSubmit () {
         .then(response => {
           render.renderTaskPage()
         })
-
   })
 }
 
@@ -70,8 +75,6 @@ function signupSubmit () {
 function newListSubmit () {
   document.querySelector('.new-list-submit').addEventListener('click', (ev) => {
       ev.preventDefault()
-      document.querySelector('.new-list-form').classList.add('hide')
-      document.querySelector('.tasks-container').classList.remove('hide')
       const title = document.querySelector('#new-list-title').value
       const token = JSON.parse(localStorage.getItem('token'))
 
@@ -81,12 +84,13 @@ function newListSubmit () {
 
 function newTaskSubmit () {
     document.querySelector('.task-submit').addEventListener('click', (ev) => {
-        ev.preventDefault()
-        const title = document.querySelector('.task-title').value
-        const description = document.querySelector('.task-description').value
+        // ev.preventDefault()
+        console.log('yo')
+        const title = document.querySelector('#task-title').value
+        const description = document.querySelector('#task-description').value
         const token = JSON.parse(localStorage.getItem('token'))
-
-        users.createTask(title, description, token)
+        let list_id = listLinkId
+        users.createTask(title, description, list_id, token)
     })
     
 }
@@ -97,11 +101,8 @@ function completeButton(){
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.id
-            // const title = ev.target.title
-            // const description = ev.target.description
             const token = JSON.parse(localStorage.getItem('token'))
             users.completeTask(listId, id, token)
-            // render.renderTaskPage()
         })
     })
 } 
@@ -115,7 +116,21 @@ function deleteButton() {
             const listId = ev.target.dataset.listId
             const token = JSON.parse(localStorage.getItem('token'))
             users.deleteTask(listId, id, token)
-            // render.renderTaskPage()
+        })
+    })
+}
+
+
+function listLinks() {
+    Array.from(document.querySelectorAll('.list-link')).forEach(link => {
+        link.addEventListener('click', (ev) => {
+            ev.preventDefault
+            Array.from(document.querySelectorAll('.list-link')).forEach(link => {
+                link.classList.remove('active')
+            })
+            link.classList.add('active')
+            listLinkId = link.id
+            console.log(listLinkId)
         })
     })
 }
@@ -129,5 +144,6 @@ module.exports = {
   completeButton,
   deleteButton,
   newTaskSubmit,
+  listLinks
 
 }
