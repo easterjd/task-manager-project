@@ -2,7 +2,6 @@ const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
 const messages = require('./messages')
-let listLinkId= ""
 
 
 function navLinksMain () {
@@ -103,13 +102,11 @@ function newTaskSubmit () {
         console.log('listid' + list_id)
         users.createTask(title, description, list_id, token)
     })
-
 }
 
 function completeButton(){
     Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
-        button.addEventListener('click', function(ev) {
-            
+        button.addEventListener('click', function(ev) {            
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.id
@@ -133,20 +130,27 @@ function deleteButton() {
 }
 
 function listLinks() {
+    if(render.listLinkId() === 0) {
+        console.log('hi')
+        const listLinks = document.querySelector('.collection')
+        let activeLink = listLinks.children[0]
+        activeLink.classList.add('active')
+        let number = Number(listLinks.children[0].id)
+        linkId = number
+        render.listTasks()
+      }
     Array.from(document.querySelectorAll('.list-link')).forEach(link => {
         link.addEventListener('click', (ev) => {
-            ev.preventDefault
+            console.log('hi')
+            ev.preventDefault()
             Array.from(document.querySelectorAll('.list-link')).forEach(link => {
                 link.classList.remove('active')
             })
             link.classList.add('active')
             render.listLinkId(link.id)
-            console.log(link.id)
-            completeButton()
         })
     })
-    // completeButton()
-    // deleteButton()
+    
 }
 
 render.listClicked

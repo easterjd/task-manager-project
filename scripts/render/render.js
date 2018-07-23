@@ -1,6 +1,6 @@
 const events = require('./event-listeners')
 const { listsTemp, nav, page, tasks, users } = require('../templates')
-let linkId = 3
+let linkId = 0
 
 function renderTaskPage () {
   const events = require('./event-listeners')
@@ -23,16 +23,13 @@ function renderTaskPage () {
         lists.data.lists.forEach(list => {
           listLinks.innerHTML += listsTemp.listLinks(list)
         })
+       })
+       .then(res => {
         listTasks()
-        if(linkId === 0) {
-          let activeLink = listLinks.children[0]
-          activeLink.classList.add('active')
-          let number = Number(listLinks.children[0].id)
-          linkId = number
-      }
-      events.listLinks()
-      events.newTaskSubmit()
-      })
+        events.listLinks()
+        events.newTaskSubmit()
+       }) 
+      
   } else {
     //Some error
   }
@@ -92,10 +89,9 @@ function renderNewListForm(){
 
 function listLinkId(id) {
   if(!id) {
-    renderTaskPage()
     return linkId
   } else {
-    renderTaskPage()
+    listTasks()
     linkId = Number(id)
     return linkId
   } 
