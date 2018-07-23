@@ -39,6 +39,7 @@ function getLists (token) {
     })
 }
 
+
 function createList (title, token) {
   const body = { title }
   return axios.post(`http://localhost:5000/api/lists`, body, { headers: { authorization: `Bearer ${token}`}})
@@ -63,7 +64,6 @@ function deleteTask (listId, id, token) {
 }
 
 function createTask (title, description, list_id, token) {
-  console.log('hi from createtaskrequest')
   const body = { title, description, list_id }
   return axios.post(`http://localhost:5000/api/lists/${list_id}/tasks`, body, { headers: { authorization: `Bearer ${token}`}})
   .then(response => {

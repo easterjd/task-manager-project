@@ -1,7 +1,6 @@
 const users = require('../requests/users')
 const render = require('./render')
 const lists = require('../templates/lists')
-let listLinkId= ""
 
 
 function navLinksMain () {
@@ -84,12 +83,12 @@ function newListSubmit () {
 
 function newTaskSubmit () {
     document.querySelector('.task-submit').addEventListener('click', (ev) => {
-        // ev.preventDefault()
-        console.log('yo')
+        ev.preventDefault()
         const title = document.querySelector('#task-title').value
         const description = document.querySelector('#task-description').value
         const token = JSON.parse(localStorage.getItem('token'))
-        let list_id = listLinkId
+        let list_id = render.listLinkId()
+        console.log('listid' + list_id)
         users.createTask(title, description, list_id, token)
     })
     
@@ -120,7 +119,6 @@ function deleteButton() {
     })
 }
 
-
 function listLinks() {
     Array.from(document.querySelectorAll('.list-link')).forEach(link => {
         link.addEventListener('click', (ev) => {
@@ -129,11 +127,14 @@ function listLinks() {
                 link.classList.remove('active')
             })
             link.classList.add('active')
-            listLinkId = link.id
-            console.log(listLinkId)
+            render.listLinkId(link.id)
+            console.log(link.id)
+            // render.listTasks()
         })
     })
 }
+
+render.listClicked
 
 module.exports = {
   navLinksMain,
