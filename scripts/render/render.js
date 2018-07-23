@@ -1,6 +1,6 @@
 const events = require('./event-listeners')
 const { listsTemp, nav, page, tasks, users } = require('../templates')
-let linkId = 0
+let linkId = 3
 
 function renderTaskPage () {
   const events = require('./event-listeners')
@@ -49,7 +49,6 @@ function renderLogin () {
 }
 
 function listTasks() {
-  console.log('hello')
   const loginCheck = JSON.parse(localStorage.getItem('token'))
   const users = require('../requests/users')
   users.getLists(loginCheck)
@@ -60,18 +59,21 @@ function listTasks() {
             const tasks = require('../templates')
             const doingTasks = document.querySelector('.doing-tasks')
             const doneTasks = document.querySelector('.done-tasks')
-            if(list.task.completed === false) {
-              doingTasks.innerHTML += tasks.tasks.taskCard(task)
+            const taskies = list.tasks
+            // console.log(tasks[0])
+            taskies.forEach(task => {
+              if(task.completed === false) {
+                doingTasks.innerHTML += tasks.tasks.taskCard(task)
+               }
+              if(task.completed === true) {
+              doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
             }
-            if(task.completed === true) {
-             doneTasks.innerHTML += tasks.tasks.doneTaskCard(task)
-            }
-          }
-          
-
+          })
+        }
        })
       })
 }
+
 
 function renderNewListForm(){
   const container = document.querySelector('.general')
