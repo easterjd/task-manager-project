@@ -5,18 +5,18 @@ let listLinkId= ""
 
 
 function navLinksMain () {
+  signupSubmit()
+  loginSubmit()
   document.querySelector('.signup-button').addEventListener('click', (ev) => {
       ev.preventDefault()
       document.querySelector('.login-form').classList.add('hide')
       document.querySelector('.signup-form').classList.remove('hide')
-      signupSubmit()
   })
 
   document.querySelector('.login-button').addEventListener('click', (ev) => {
       ev.preventDefault()
       document.querySelector('.login-form').classList.remove('hide')
       document.querySelector('.signup-form').classList.add('hide')
-      loginSubmit()
   })
 }
 
@@ -27,7 +27,7 @@ function navLinksTasks () {
       render.renderNewListForm()
     //   document.querySelector('.new-list-form').classList.remove('hide')
       newListSubmit()
-      
+
   })
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
@@ -59,16 +59,22 @@ function loginSubmit () {
 function signupSubmit () {
   document.querySelector('.signup-submit').addEventListener('click', (ev) => {
       ev.preventDefault()
-      document.querySelector('.signup-form').classList.add('hide')
-      document.querySelector('.login-form').classList.remove('hide')
       const email = document.querySelector('#signup-email').value
       const password = document.querySelector('#signup-password').value
+      const passwordRe = document.querySelector('#signup-password-re-enter').value
       const first_name = document.querySelector('#signup-first-name').value
-      const last_name = document.querySelector('#signup-last-name').value    
+      const last_name = document.querySelector('#signup-last-name').value
+      if (password !== passwordRe) {
+        throw new Error('Passwords Dont Match')
+        // Add Error
+      }
       users.signupUser(password, email, first_name, last_name)
         .then(response => {
+          console.log(response)
             render.renderLogin()
-        })  
+        })
+
+
   })
 }
 
@@ -92,7 +98,7 @@ function newTaskSubmit () {
         let list_id = listLinkId
         users.createTask(title, description, list_id, token)
     })
-    
+
 }
 
 function completeButton(){
@@ -105,7 +111,7 @@ function completeButton(){
             users.completeTask(listId, id, token)
         })
     })
-} 
+}
 
 function deleteButton() {
     Array.from(document.querySelectorAll('.delete-button')).forEach(button => {
