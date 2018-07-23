@@ -47,7 +47,8 @@ function renderTasks(lists) {
     if(linkId === 0) {
       let activeLink = listLinks.children[0]
       activeLink.classList.add('active')
-      linkId = listLinks.children[0].id
+      let number = Number(listLinks.children[0].id)
+      linkId = number
   }
   listTasks()
 }
@@ -57,16 +58,13 @@ function listTasks() {
   const users = require('../requests/users')
   users.getLists(loginCheck)
       .then(lists => {
-        console.log(lists.data.lists)
-        let listTasks = lists.data.lists[linkId].tasks
-        // console.log(linkId)
-        // console.log(lists.data.lists[linkId].tasks)
-        listTasks.forEach(task => {
+        let listTasks = lists.data.lists
+        listTasks.forEach(list => {
+          console.log(list)
           const tasks = require('../templates')
           const doingTasks = document.querySelector('.doing-tasks')
           const doneTasks = document.querySelector('.done-tasks')
           if(task.completed === false) {
-            // console.log(task)
             doingTasks.innerHTML += tasks.tasks.taskCard(task)
           }
           if(task.completed === true) {
