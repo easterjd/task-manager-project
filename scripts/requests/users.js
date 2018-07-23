@@ -55,12 +55,14 @@ function completeTask (listId, id, token) {
    })
 }
 
+
 function deleteTask (listId, id, token) {
   return axios.delete(`http://localhost:5000/api/lists/${listId}/tasks/${id}`, { headers: { authorization: `Bearer ${token}`}})
   .then(response => {
     render.renderTaskPage()
   })
 }
+
 
 function createTask (title, description, token) {
   const body = { title, description }
@@ -82,4 +84,5 @@ module.exports = {
   createTask,
   createList,
  
+
 }
