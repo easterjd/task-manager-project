@@ -137,7 +137,7 @@ function updateButton () {
 
 function completeButton(){
     Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
-        button.addEventListener('click', function(ev) {            
+        button.addEventListener('click', function(ev) {
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.parentNode.id
@@ -178,12 +178,16 @@ function listLinks() {
             ev.preventDefault()
             Array.from(document.querySelectorAll('.list-link')).forEach(link => {
                 link.classList.remove('active')
+                link.classList.remove('blue')
+                link.classList.remove('darken-4')
             })
             link.classList.add('active')
+            link.classList.add('blue')
+            link.classList.add('darken-4')
             render.listLinkId(link.id)
         })
     })
-    
+
 }
 
 render.listClicked

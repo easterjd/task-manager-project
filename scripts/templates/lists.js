@@ -1,8 +1,8 @@
 function newListForm () {
   return `
     <div class="row new-list-form">
-      <div class="col s6 m6">
-        <div class="card blue-grey darken-1 center">
+      <div class="col s12 m12">
+        <div class="card full hoverable center">
           <form class="card-content white-text">
             <span class="card-title">New List</span>
             <div class="row">
