@@ -137,7 +137,7 @@ function updateButton () {
 
 function completeButton(){
     Array.from(document.querySelectorAll('.complete-button')).forEach(button => {
-        button.addEventListener('click', function(ev) {            
+        button.addEventListener('click', function(ev) {
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.parentNode.id
@@ -180,10 +180,13 @@ function listLinks() {
                 console.log(link.children[0].classList)
                 link.classList.remove('active')
                 link.children[0].classList.remove('hide')
-                // ev.target.tagname
+                link.classList.remove('blue')
+                link.classList.remove('darken-4')
             })
             link.classList.add('active')
             link.children[0].classList.add('hide')
+            link.classList.add('blue')
+            link.classList.add('darken-4')
             render.listLinkId(link.id)
         })
     })

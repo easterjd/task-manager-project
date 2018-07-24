@@ -15,7 +15,7 @@ function taskPage () {
 <!-- NEW TASK FORM -->
         <div class="task-form" id="task-form">
           <div class="">
-            <div class="card blue-grey darken-1 center">
+            <div class="card center hoverable new-task">
               <form class="card-content white-text">
                 <span class="card-title">Create A New Task</span>
                 <div class="row">
