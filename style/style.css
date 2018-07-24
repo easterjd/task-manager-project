@@ -1,11 +1,60 @@
+body {
+  background-color: #eceff1;
+}
+
+#alternate {
+  display: inline;
+  white-space: nowrap
+}
+
+h3 {
+  margin-top: 0;
+  padding-top: 8px
+}
+
+.card {
+  animation: fadein 1s;
+}
+
 .card.full {
   margin-left: 25%;
-  margin-right: 25%
+  margin-right: 25%;
+  animation: fadeinlogin 1s;
+}
+
+.card.new-task {
+  animation: fadeinlogin 1s;
 }
 
 .card.small {
   margin-left: 0;
   margin-right: 0;
+}
+
+.hoverable {
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  background-color: #3D5A80;
+  opacity: 0.3;
+  transition: 0.4s;
+}
+
+.hoverable:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #3D5A80;
+  opacity: 1
+}
+
+.waves-effect.waves-light {
+  background-color: #EE6C4D;
+}
+
+.collection .collection-item.active {
+  background-color: #3D5A80;
+  color: #98C1D9;
 }
 
 .notice-para {
@@ -15,4 +64,24 @@
   text-align: center;
   color: black;
   transition: 1.2s
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeinlogin {
+    from { opacity: 0; }
+    to   { opacity: 0.3; }
+}
+
+@-webkit-keyframes fadeinlogin {
+    from { opacity: 0; }
+    to   { opacity: 0.3; }
 }

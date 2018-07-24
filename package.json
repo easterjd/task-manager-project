@@ -19,6 +19,7 @@
     "watchify": "^3.11.0"
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "moment": "^2.22.2"
   }
 }
