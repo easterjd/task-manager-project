@@ -80,6 +80,14 @@ function createTask (title, description, list_id, token) {
   })
 }
 
+function listDelete(listId, token){
+  return axios.delete(`http://localhost:5000/api/lists/${listId}`, { headers: { authorization: `Bearer ${token}`}})
+  .then(res => {
+    render.renderTaskPage()
+
+  })
+}
+
 
 
 module.exports = {
@@ -91,6 +99,7 @@ module.exports = {
   logout,
   createTask,
   createList,
-  updateTask
+  updateTask,
+  listDelete
 
 }
