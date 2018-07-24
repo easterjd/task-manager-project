@@ -52,6 +52,14 @@ h3 {
   background-color: #EE6C4D;
 }
 
+.collection .collection-item {
+  background-color: #fff;
+  line-height: 2rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
 .collection .collection-item.active {
   background-color: #3D5A80;
   color: #98C1D9;
