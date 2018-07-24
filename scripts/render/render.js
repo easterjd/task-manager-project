@@ -78,6 +78,7 @@ function listTasks() {
       events.completeButton()
       events.deleteButton()
       events.updateButton()
+
     })
 
   }

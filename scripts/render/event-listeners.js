@@ -141,7 +141,6 @@ function completeButton(){
             ev.preventDefault()
             const listId = ev.target.dataset.listId
             const id = ev.target.parentNode.id
-            console.log(id)
             const token = JSON.parse(localStorage.getItem('token'))
             users.completeTask(listId, id, token)
         })
@@ -168,25 +167,39 @@ function listLinks() {
         const listLinks = document.querySelector('.collection')
         let activeLink = listLinks.children[0]
         activeLink.classList.add('active')
+        activeLink.children[0].classList.add('hide')
         let number = Number(listLinks.children[0].id)
         linkId = number
         render.listTasks()
       }
+      listDelete()
     Array.from(document.querySelectorAll('.list-link')).forEach(link => {
         link.addEventListener('click', (ev) => {
-            console.log('hi')
             ev.preventDefault()
             Array.from(document.querySelectorAll('.list-link')).forEach(link => {
+                console.log(link.children[0].classList)
                 link.classList.remove('active')
+                link.children[0].classList.remove('hide')
+                // ev.target.tagname
             })
             link.classList.add('active')
+            link.children[0].classList.add('hide')
             render.listLinkId(link.id)
         })
     })
-    
 }
 
-render.listClicked
+function listDelete(){
+    Array.from(document.querySelectorAll('.list-delete-button')).forEach(button => {
+        button.addEventListener('click', function(ev) {
+            console.log('yoyo')
+            const token = JSON.parse(localStorage.getItem('token'))
+            const listId = ev.target.dataset.listId
+            users.listDelete(listId, token)
+        })
+    })
+}
+
 
 module.exports = {
   navLinksMain,
