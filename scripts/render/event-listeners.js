@@ -100,7 +100,6 @@ function newTaskSubmit () {
         const description = document.querySelector('#task-description').value
         const token = JSON.parse(localStorage.getItem('token'))
         let list_id = render.listLinkId()
-        console.log('listid' + list_id)
         users.createTask(title, description, list_id, token)
     })
 }
@@ -127,7 +126,6 @@ function updateButton () {
         const token = JSON.parse(localStorage.getItem('token'))
         users.updateTask(listId, id, body, token)
           .then(response => {
-            console.log(response)
             render.listTasks()
           })
       })
@@ -161,36 +159,26 @@ function deleteButton() {
     })
 }
 
-function listLinks() {
-    if(render.listLinkId() === 0) {
-        console.log('hi')
-        const listLinks = document.querySelector('.collection')
-        let activeLink = listLinks.children[0]
-        activeLink.classList.add('active')
-        activeLink.children[0].classList.add('hide')
-        let number = Number(listLinks.children[0].id)
-        linkId = number
-        render.listTasks()
-      }
-      listDelete()
-    Array.from(document.querySelectorAll('.list-link')).forEach(link => {
-        link.addEventListener('click', (ev) => {
-            ev.preventDefault()
-            Array.from(document.querySelectorAll('.list-link')).forEach(link => {
-                console.log(link.children[0].classList)
-                link.classList.remove('active')
-                link.children[0].classList.remove('hide')
-                link.classList.remove('blue')
-                link.classList.remove('darken-4')
+    function listLinks() {     
+        Array.from(document.querySelectorAll('.list-link')).forEach(link => {
+            link.addEventListener('click', (ev) => {
+                console.log(link.id)
+                ev.preventDefault()
+                Array.from(document.querySelectorAll('.list-link')).forEach(link => {
+                    link.classList.remove('active')
+                    link.children[0].classList.remove('hide')
+                    link.classList.remove('blue')
+                    link.classList.remove('darken-4')
+                })
+                link.classList.add('active')
+                link.children[0].classList.add('hide')
+                link.classList.add('blue')
+                link.classList.add('darken-4')
+                render.listLinkId(parseInt(link.id))
             })
-            link.classList.add('active')
-            link.children[0].classList.add('hide')
-            link.classList.add('blue')
-            link.classList.add('darken-4')
-            render.listLinkId(link.id)
+            listDelete()
         })
-    })
-}
+    }
 
 function listDelete(){
     Array.from(document.querySelectorAll('.list-delete-button')).forEach(button => {

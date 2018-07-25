@@ -2,7 +2,9 @@ const events = require('./event-listeners')
 const { listsTemp, nav, page, tasks, users } = require('../templates')
 let linkId = 0
 
+
 function renderTaskPage () {
+  console.log(linkId)
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
 
@@ -14,8 +16,9 @@ function renderTaskPage () {
     container.innerHTML = page.taskPage()
     navButtons.innerHTML = nav.taskNav()
     events.navLinksTasks()
-
+    events.newTaskSubmit()
     const users = require('../requests/users')
+
     users.getLists(loginCheck)
       .then(lists => {
         const listLinks = document.querySelector('.collection')
@@ -23,17 +26,33 @@ function renderTaskPage () {
         lists.data.lists.forEach(list => {
           listLinks.innerHTML += listsTemp.listLinks(list)
         })
-       })
+      })
        .then(res => {
-        listTasks()
         events.listLinks()
-        events.newTaskSubmit()
        }) 
+       .then(res => {
+         const listLinks = document.querySelector('.collection')
+         if(linkId === 0) {
+          let number = Number(listLinks.children[0].id)
+          listLinkId(number)
+          let activeLink = listLinks.children[0]
+          activeLink.classList.add('active')
+          activeLink.children[0].classList.add('hide')
+         }else{
+           const anotherListLinks = Array.from(document.querySelectorAll('.list-link'))
+           let activeLink = anotherListLinks.find(child => parseInt(child.id) === linkId)
+           activeLink.classList.add('active')
+           activeLink.children[0].classList.add('hide')
+           listTasks()
+         }
+      })
+    } 
+  } 
       
-  } else {
-    //Some error
-  }
-}
+  // else {
+  //   //Some error
+  // }
+// }
 
 function renderLogin () {
   const events = require('./event-listeners')
@@ -93,8 +112,8 @@ function listLinkId(id) {
   if(!id) {
     return linkId
   } else {
-    listTasks()
     linkId = Number(id)
+    listTasks()
     return linkId
   }
 }
