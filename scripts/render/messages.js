@@ -4,7 +4,8 @@ function successMsg (location) {
     successPara = document.querySelectorAll('.notice-para')[0]
   } else if (location === 'signup') {
     successPara = document.querySelectorAll('.notice-para')[1]
-  }
+  } 
+
   successPara.innerHTML = "Success"
   setTimeout(() => {
     successPara.style.opacity = 1

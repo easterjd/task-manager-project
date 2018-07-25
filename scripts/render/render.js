@@ -32,6 +32,7 @@ function renderTaskPage () {
        .then(res => {
          const listLinks = document.querySelector('.collection')
          if(linkId === 0) {
+          const listLinks = document.querySelector('.collection')
           let number = Number(listLinks.children[0].id)
           listLinkId(number)
           let activeLink = listLinks.children[0]
@@ -39,6 +40,7 @@ function renderTaskPage () {
           activeLink.children[0].classList.add('hide')
           location.hash = `/lists/${number}`
          }else{
+          //  const listLinks = document.querySelector('.collection')
            const anotherListLinks = Array.from(document.querySelectorAll('.list-link'))
            let activeLink = anotherListLinks.find(child => parseInt(child.id) === linkId)
            activeLink.classList.add('active')
