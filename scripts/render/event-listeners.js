@@ -68,8 +68,8 @@ function signupSubmit () {
       if (email && password && passwordRe && first_name && last_name) {
         users.signupUser(password, email, first_name, last_name)
           .then(response => {
-            render.renderLogin()
-            messages.successMsg('login')
+            render.renderTaskPage()
+            // messages.successMsg('login')
           })
           .catch(err => {
             messages.failureMsg('signup')

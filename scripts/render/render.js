@@ -3,6 +3,7 @@ const { listsTemp, nav, page, tasks, users } = require('../templates')
 let linkId = 0
 
 function renderTaskPage () {
+  console.log(linkId)
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
 

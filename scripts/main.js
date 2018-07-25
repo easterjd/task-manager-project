@@ -2,7 +2,11 @@ const events = require('./render/event-listeners')
 const render = require('./render/render')
 const anime = require('animejs')
 
-render.renderLogin()
+if (localStorage.getItem('token')) {
+  render.renderTaskPage()
+} else {
+  render.renderLogin()
+}
 
 var functionBasedDelay = anime({
   targets: '#alternate h3',
