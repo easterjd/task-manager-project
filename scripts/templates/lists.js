@@ -24,7 +24,7 @@ function newListForm () {
 
 function listLinks (listItem) {
   const link = `
-  <a href="#!" id="${listItem.id}" class="collection-item list-link valign-wrapper">${listItem.title}<span class="right"><button class="list-delete-button waves-effect waves-light btn" data-list-id="${listItem.id}">Delete</button></span></a>
+  <a href="#" id="${listItem.id}" class="collection-item list-link valign-wrapper">${listItem.title}<span class="right"><button class="list-delete-button waves-effect waves-light btn" data-list-id="${listItem.id}">Delete</button></span></a>
   `
   return link
 }

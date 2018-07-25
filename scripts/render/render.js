@@ -29,7 +29,7 @@ function renderTaskPage () {
       })
        .then(res => {
         events.listLinks()
-       }) 
+       })
        .then(res => {
          const listLinks = document.querySelector('.collection')
          if(linkId === 0) {
@@ -38,17 +38,19 @@ function renderTaskPage () {
           let activeLink = listLinks.children[0]
           activeLink.classList.add('active')
           activeLink.children[0].classList.add('hide')
+          location.hash = `/lists/${number}`
          }else{
            const anotherListLinks = Array.from(document.querySelectorAll('.list-link'))
            let activeLink = anotherListLinks.find(child => parseInt(child.id) === linkId)
            activeLink.classList.add('active')
            activeLink.children[0].classList.add('hide')
+           location.hash = `/lists/${linkId}`
            listTasks()
          }
       })
-    } 
-  } 
-      
+    }
+  }
+
   // else {
   //   //Some error
   // }
@@ -65,6 +67,7 @@ function renderLogin () {
   events.navLinksMain()
   events.loginSubmit()
   events.signupSubmit()
+  location.hash = '/login'
 }
 
 function listTasks() {

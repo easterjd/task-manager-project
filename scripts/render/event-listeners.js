@@ -26,7 +26,13 @@ function navLinksTasks () {
       ev.preventDefault()
       document.querySelector('.tasks-container').classList.add('hide')
       render.renderNewListForm()
+      location.hash = `/lists/new`
       newListSubmit()
+  })
+
+  document.querySelector('.all-tasks-button').addEventListener('click', (ev) => {
+    ev.preventDefault()
+    render.renderTaskPage()
   })
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
@@ -159,7 +165,7 @@ function deleteButton() {
     })
 }
 
-    function listLinks() {     
+    function listLinks() {
         Array.from(document.querySelectorAll('.list-link')).forEach(link => {
             link.addEventListener('click', (ev) => {
                 console.log(link.id)
@@ -175,6 +181,7 @@ function deleteButton() {
                 link.classList.add('blue')
                 link.classList.add('darken-4')
                 render.listLinkId(parseInt(link.id))
+                location.hash = `/lists/${link.id}`
             })
             listDelete()
         })
