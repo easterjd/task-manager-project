@@ -12,7 +12,7 @@ function taskCard (data) {
       </button>
       <button data-list-id="${data.list_id}"class="complete-button btn waves-effect waves-light">Complete
       </button>
-      <p class="white-text">${data.created_at === data.updated_at ? 'Created' + moment(data.created_at).format('LLL') : 'Updated' + moment(data.updated_at).format('LLL')}</p>
+      <p class="white-text">${data.created_at === data.updated_at ? 'Created ' + moment(data.created_at).format('LLL') : 'Updated ' + moment(data.updated_at).format('LLL')}</p>
     </div>
   </div>`
 }
