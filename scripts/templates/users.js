@@ -7,11 +7,11 @@ function login () {
             <span class="card-title">Login</span>
             <div class="row">
               <div class="input-field col s6">
-                <input id="email" type="email" class="validate" value="student@galvanize.com" required>
+                <input id="email" type="email" class="validate" required>
                 <label for="email">Email</label>
               </div>
               <div class="input-field col s6">
-                <input id="password" type="password" class="validate" value="password" required>
+                <input id="password" type="password" class="validate" required>
                 <label for="password">Password</label>
               </div>
             </div>

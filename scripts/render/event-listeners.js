@@ -37,16 +37,9 @@ function navLinksTasks () {
 
   document.querySelector('.logout-button').addEventListener('click', (ev) => {
       ev.preventDefault()
-      // document.querySelector('.login-form').classList.remove('hide')
-      // document.querySelector('.main-navbar').classList.remove('hide')
-      // document.querySelector('.tasks-navbar').classList.add('hide')
-      // document.querySelector('.tasks-container').classList.add('hide')
       users.logout()
       render.renderLogin()
   })
-
-  //all-tasks-button
-
 }
 
 function loginSubmit () {
@@ -82,7 +75,6 @@ function signupSubmit () {
             messages.failureMsg('signup')
           })
       } else {
-        console.log('error')
         messages.failureMsg('signup')
       }
 
@@ -119,10 +111,8 @@ function updateButton () {
 
       const title = ev.target.parentNode.parentNode.querySelector('span').textContent
       const description = ev.target.parentNode.parentNode.querySelector('p').textContent
-      console.log(title, description, listId, id)
       const cardContainer = ev.target.parentNode.parentNode
       cardContainer.innerHTML = tasks.taskUpdateCard(title, description)
-
 
       document.querySelector('.task-update').addEventListener('click', (ev) => {
         ev.preventDefault()
@@ -155,9 +145,7 @@ function deleteButton() {
     Array.from(document.querySelectorAll('.delete-button')).forEach(button => {
         button.addEventListener('click', function(ev) {
             ev.preventDefault()
-            console.log('chello')
             const id = ev.target.parentNode.id
-            console.log(id)
             const listId = ev.target.dataset.listId
             const token = JSON.parse(localStorage.getItem('token'))
             users.deleteTask(listId, id, token)
@@ -168,7 +156,6 @@ function deleteButton() {
     function listLinks() {
         Array.from(document.querySelectorAll('.list-link')).forEach(link => {
             link.addEventListener('click', (ev) => {
-                console.log(link.id)
                 ev.preventDefault()
                 Array.from(document.querySelectorAll('.list-link')).forEach(link => {
                     link.classList.remove('active')
@@ -190,7 +177,6 @@ function deleteButton() {
 function listDelete(){
     Array.from(document.querySelectorAll('.list-delete-button')).forEach(button => {
         button.addEventListener('click', function(ev) {
-            console.log('yoyo')
             const token = JSON.parse(localStorage.getItem('token'))
             const listId = ev.target.dataset.listId
             users.listDelete(listId, token)

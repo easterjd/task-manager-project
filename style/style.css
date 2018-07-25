@@ -1,10 +1,10 @@
-body {
-  background-image: url('pyramid.png');
-}
-
 #alternate {
   display: inline;
   white-space: nowrap
+}
+
+body {
+  background-image: url('pyramid.png');
 }
 
 h3 {
