@@ -5,7 +5,9 @@
 
 This front-end project was based off of a pre-made server and database provided by Galvanize. A 2-person team was tasked with creating and implementing all necessary front-end code for the pre-written server/database to complete this the project. The code includes axios calls, user authentication and DOM manipulation, as well as all front-end design. The result of this collaboration is a full-stack Task Manager, which is available locally on your machine or deployed online through Heroku & Surge. 
 
-The Task Manager app allows users to create a uniquie account, and from there they will have access to their Task Manager. Each unique Task Manager is comprised of a collection of Lists and options, and each List contains it's own collection of Tasks.
+The Task Manager app allows users to create a unique account, and from there they will have access to their Task Manager. Each unique Task Manager is comprised of a collection of Lists and options, and each List contains it's own collection of Tasks.
+
+![Task tracker]('./tasktracker.png')
 
 
 ###OPTIONS AVAILABLE TO THE USER
@@ -35,13 +37,9 @@ The Task Manager app allows users to create a uniquie account, and from there th
 ###TO INSTALL TASK MANAGER
 
     -fork and clone this frontend repository onto your local machine
-    -in scripts/request/users.js, you will need to change each axois call's http address from                       'https://hidden-waters-30960.herokuapp.com/api/lists' to 'https://localhost5000/api/lists' 
-         and enter the correct call path for each axios call
     -run 'npm install' in your terminal
-    -fork and clone the [this](https://github.com/jewell86/auth-task-manager-server)  backend repository at (https://github.com/jewell86/auth-task-manager-server) onto your local machine
-    -open a new terminal tab and run 'npm install' for the backend directory, as well as npm run knex migrate:latest & npm run knex seed:run
-    -run 'npm run dev' on BOTH terminal windows for the frontend directory and the backend directory
-    -the prevous step will both run the backend server locally and open the frontend program in your browser using live-server
+    -run 'npm run dev'
+    -the prevous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
 
 
 ###TO USE TASK MANAGER ONLINE

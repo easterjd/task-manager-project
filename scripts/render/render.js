@@ -3,7 +3,6 @@ const { listsTemp, nav, page, tasks, users } = require('../templates')
 let linkId = 0
 
 async function renderTaskPage () {
-  console.log(linkId)
   const events = require('./event-listeners')
   const { lists, nav, page, tasks, users} = require('../templates')
   const loginCheck = JSON.parse(localStorage.getItem('token'))
@@ -11,7 +10,6 @@ async function renderTaskPage () {
   if (loginCheck) {
     const users = require('../requests/users')
     const listCheck = await users.getLists(loginCheck)
-    console.log(listCheck)
     if (listCheck.data.lists.length === 0) {
       renderNewListForm()
       events.newListSubmit()
