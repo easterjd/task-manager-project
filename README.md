@@ -1,16 +1,16 @@
-#TASK MANAGER
+# TASK MANAGER
 ------------------------------
 
-###ABOUT THIS PROJECT
+### ABOUT THIS PROJECT
 
 This front-end project was based off of a pre-made server and database provided by Galvanize. A 2-person team was tasked with creating and implementing all necessary front-end code for the pre-written server/database to complete this the project. The code includes axios calls, user authentication and DOM manipulation, as well as all front-end design. The result of this collaboration is a full-stack Task Manager, which is available locally on your machine or deployed online through Heroku & Surge. 
 
 The Task Manager app allows users to create a unique account, and from there they will have access to their Task Manager. Each unique Task Manager is comprised of a collection of Lists and options, and each List contains it's own collection of Tasks.
 
-![Task tracker]('./tasktracker.png')
+![Task tracker](https://raw.githubusercontent.com/easterjd/task-manager-project/taskTracker.png)
 
 
-###OPTIONS AVAILABLE TO THE USER
+### OPTIONS AVAILABLE TO THE USER
 
     -Signup { Name, Last Name, Email, Password, Password-Duplicate }
     -Login { Email, Password }
@@ -24,7 +24,7 @@ The Task Manager app allows users to create a unique account, and from there the
     - Logout  
 
 
-###FEATURES
+### FEATURES
 
 -Token Authorization ensures that only one user has access to their unique Task Manager account
 -Users are able to create and delete Lists as well as create, complete, update and delete Tasks for each List
@@ -34,7 +34,7 @@ The Task Manager app allows users to create a unique account, and from there the
 -Did you see the way that the title 'Task Manager' slides in to the left upon render?
 
 
-###TO INSTALL TASK MANAGER
+### TO INSTALL TASK MANAGER
 
     -fork and clone this frontend repository onto your local machine
     -run 'npm install' in your terminal
@@ -42,10 +42,12 @@ The Task Manager app allows users to create a unique account, and from there the
     -the prevous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
 
 
-###TO USE TASK MANAGER ONLINE
+### TO USE TASK MANAGER ONLINE
+
     -visit task-pro.surge.sh, viola!
 
-###BUILT WITH
+### BUILT WITH
+
     -Javascript, HTML & CSS
     -Materialize
     -Axios
@@ -55,6 +57,7 @@ The Task Manager app allows users to create a unique account, and from there the
     -Moment
 
 
-###DEVELOPERS
+### DEVELOPERS
+
     -For more information, pleasee contact this project's developers, Dillon Easter or Jewell White at:   
         johndilloneaster@gmail.com or jewellsmailbox@gmail.com 
