@@ -14,7 +14,9 @@ function newListForm () {
             <button class="new-list-submit btn waves-effect waves-light" type="submit" name="action">Create New List
             </button>
           </form>
-
+          <div class="notice">
+          <p class="notice-para">SOmething</p>
+          </div>
         </div>
       </div>
     </div>

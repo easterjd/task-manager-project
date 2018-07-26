@@ -85,9 +85,12 @@ function newListSubmit () {
   document.querySelector('.new-list-submit').addEventListener('click', (ev) => {
       ev.preventDefault()
       const title = document.querySelector('#new-list-title').value
-      const token = JSON.parse(localStorage.getItem('token'))
-
-      users.createList(title, token)
+      if(!title) {
+        messages.failureMsg('login')
+      } else {
+        const token = JSON.parse(localStorage.getItem('token'))
+        users.createList(title, token)
+      }
   })
 }
 
@@ -96,9 +99,13 @@ function newTaskSubmit () {
         ev.preventDefault()
         const title = document.querySelector('#task-title').value
         const description = document.querySelector('#task-description').value
+        if(!title || !description) {
+            messages.failureMsg('login')
+        } else {
         const token = JSON.parse(localStorage.getItem('token'))
         let list_id = render.listLinkId()
         users.createTask(title, description, list_id, token)
+        }
     })
 }
 
