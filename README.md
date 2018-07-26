@@ -44,7 +44,7 @@ The Task Manager app allows users to create a unique account, and from there the
 
 ### TO USE TASK MANAGER ONLINE
 
-    -visit <a href="task-pro.surge.sh">Task Manager Online!</a>
+<a href="task-pro.surge.sh">Task Manager Online!</a>
 
 ### BUILT WITH
 
