@@ -7,7 +7,7 @@ This front-end project was based off of a pre-made server and database provided 
 
 The Task Manager app allows users to create a unique account, and from there they will have access to their Task Manager. Each unique Task Manager is comprised of a collection of Lists and options, and each List contains it's own collection of Tasks.
 
-![Task tracker](./taskTracker.png)
+<img src ="./tasktracker.png">
 
 
 ### OPTIONS AVAILABLE TO THE USER
@@ -44,7 +44,7 @@ The Task Manager app allows users to create a unique account, and from there the
 
 ### TO USE TASK MANAGER ONLINE
 
-    -visit task-pro.surge.sh, viola!
+    -visit <a href="task-pro.surge.sh">Task Manager Online!</a>
 
 ### BUILT WITH
 
