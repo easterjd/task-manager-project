@@ -7,6 +7,7 @@ This front-end project was based off of a pre-made server and database provided 
 
 The Task Manager app allows users to create a unique account, and from there they will have access to their Task Manager. Each unique Task Manager is comprised of a collection of Lists and options, and each List contains it's own collection of Tasks.
 
+
 <img src ="./tasktracker.png">
 
 
@@ -27,10 +28,15 @@ The Task Manager app allows users to create a unique account, and from there the
 ### FEATURES
 
 -Token Authorization ensures that only one user has access to their unique Task Manager account
+
 -Users are able to create and delete Lists as well as create, complete, update and delete Tasks for each List
+
 -Input validation will alert a user if required field is left blank
+
 -Fade in/out on each input element is highly visually appealing
+
 -Clicking on any button creates a very satisfying ripple-effect of color on that button
+
 -Did you see the way that the title 'Task Manager' slides in to the left upon render?
 
 
@@ -39,7 +45,7 @@ The Task Manager app allows users to create a unique account, and from there the
     -fork and clone this frontend repository onto your local machine
     -run 'npm install' in your terminal
     -run 'npm run dev'
-    -the prevous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
+    -the previous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
 
 
 ### TO USE TASK MANAGER ONLINE
@@ -60,4 +66,5 @@ The Task Manager app allows users to create a unique account, and from there the
 ### DEVELOPERS
 
     -For more information, pleasee contact this project's developers, Dillon Easter or Jewell White at:   
+
         johndilloneaster@gmail.com or jewellsmailbox@gmail.com 
